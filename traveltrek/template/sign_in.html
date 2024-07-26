@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        body{
+            background-image: url('static/images/login.jpg');
+            background-size: cover;
+
+        }
+        .login{
+            display: flex;
+            justify-content: center;
+            margin-top: 200px;
+            height: 400px;
+        }
+        #text{
+            margin-top: 6px;
+            height: 40px;
+            width: 300px;
+            text-align: center;
+            border-radius: 1rem;
+            border: none;
+            box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            
+        }
+        .abc{
+            text-align: center;
+        }
+        #text1{
+            font-weight: 500;
+            font-size: 30px;
+            text-align: center;
+            color: azure;
+        }
+        #submit{
+            box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-left: 30%;
+            margin-top: 15px;
+            height: 40px;
+            width: 130px;
+            text-align: center;
+            border-radius: 1rem;
+            border: transparent;
+        }
+        #submit:hover{
+            background-color: #00ad29;
+            color: beige;
+        }
+        #checkbox{
+            height: 20px;
+            width: 20px;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+        .link{
+            margin-top: 15px;
+            display: flex;
+
+        }
+        
+        #link{
+            margin-top: 30px;
+            text-align: center;
+            color: beige;
+            margin-left: 18%;
+        }
+        #link a{
+            margin-left: 10px;
+            text-decoration: none;
+            color:black;
+            font-weight: 500;
+        }
+        .link a{
+            text-decoration: none;
+            color: beige;
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    
+        <div class="login">
+            <form method="POST">
+            {% csrf_token %}
+                <div class="abc"><span id="text1">Login</span></div>
+                
+                <br>
+                <input type="text" name="username" placeholder="Username" id="text">
+                <br>
+                <input type="password" name="password" placeholder="Password" id="text">
+                <br>
+                <div class="link"><input type="checkbox" id="checkbox"><span style="margin-top: 15px;margin-left: 5px;font-weight: 500;">Remember me</span><a href="/forget_password">Forget password?</a></div>
+                <input type="submit" value="login" id="submit">
+                <br><br>
+                <span id="link">Don't have account?<a href="/sign_up">Register</a></span>
+                
+            </form>
+            
+        </div>
+       
+
+        {{ error }}
+</body>
+</html>

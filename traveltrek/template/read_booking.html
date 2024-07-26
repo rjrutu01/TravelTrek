@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Read Booking</h1>
+    <table border="1" align="center">
+        <tr>
+            <th>User Id</th>
+            <th>Image</th>
+            <th>Destination</th>
+            <th>phone</th>
+            <th>No of Person</th>
+            <th>Price</th>
+            <th>/</th>
+            <th>/</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{ x.user.id }}</td>
+            <td><img src="{{ x.destination.image.url }}" height="200px" width="200px"></td>
+            <td>{{ x.destination.name }}</td>
+            <td>{{ x.phone }}</td>
+            <td>{{ x.person }}</td>
+            <td>{{ x.total_price }}</td>
+            <td><a href="/delete_book/{{ x.id }}">Delete</a></td>
+            <td><a href="/update_book/{{ x.id }}">update</a></td>
+            <td><a href="/create_feedback/{{ x.id }}">Feedback</a></td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

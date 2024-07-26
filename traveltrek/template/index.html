@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveltrek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
+</head>
+<body>
+    
+
+    
+            {% if request.user.is_authenticated %}
+                
+
+                {% if request.user.is_superuser %}
+
+                    admin
+
+                {% elif request.user.is_staff %}
+                
+                    <h3 ><a href="/create_destination">create_destination</a></h3>
+                    <h3 ><a href="/read_destination">read_destination</a></h3>
+                    <h3 ><a href="/read_book">read_booking</a></h3>
+
+                {% else %}
+                    
+                        <a href="">Home</a>
+                        <a href="">About</a>
+                        <a href="">Blog</a>
+                        <a href="/read_destination">Destination</a>
+                        <a href="/read_book">Book Detail</a>
+
+                {% endif %}
+
+            {% else %}
+        
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Blog</a>
+                    <a href="/read_destination">Destination</a>
+                        <a href="/sign_up">Sign up</a>
+                        <a href="/sign_in">Log in</a>
+                  
+            {% endif %}   
+    
+    
+    
+    
+    
+
+
+
+</body>
+</html>

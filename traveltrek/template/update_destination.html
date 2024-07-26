@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">update_destination</h1>
+    <table border="1" align="center">
+        <form method="POST">
+            {% csrf_token %}
+            {% for x in data %}
+            <tr>
+                <td>Destination Name</td>
+                <td><input type="text" name="uname" value="{{ x.name }}"></td>
+            </tr>
+            
+            <tr>
+                <td>Destination Description</td>
+                <td><input type="text" name="udescription" value="{{ x.description }}"></td>
+            </tr>
+            <tr>
+                <td>Destination Price</td>
+                <td><input type="text" name="uprice" value="{{ x.price }}"></td>
+            </tr>
+            <tr>
+                <td>Destination Category</td>
+                <td><select name="ucategory">
+                    <option value="adventure" {% if x.category == adventure %} selected {% endif %}>Adventure</option>
+                    <option value="wildlife" {% if x.category == wildlife %} selected {% endif %}>wildlife</option>
+                    <option value="beach" {% if x.category == beach %} selected {% endif %}>beach</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" align="center"><input type="submit" value="submit"></th>
+            </tr>
+            {% endfor %}
+        </form>
+    </table>
+</body>
+</html>

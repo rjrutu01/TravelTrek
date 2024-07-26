@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        body{
+            background-image: url('static/images/cloud.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       .sign_up{
+        
+        width: 70%;
+        height: 600px;
+        margin-top: 5rem;
+        margin-left: 13%;
+        border: transparent;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       }
+       .form{
+        height: 100%;
+        padding: 2.5rem;
+        display: inline-grid;
+        border: 1px solid black;
+        width: 550px;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        border:transparent ;
+        background-color:#f0e8e0;
+       }
+       .image{
+        border-top-left-radius:1rem;
+        border-bottom-left-radius: 1rem;
+        height: 100%;
+        width: 100%;
+        background-image: url('static/images/register.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        text-align: center;
+       }
+       .name1{
+        font-size: 2rem;
+        margin-top: 10%;
+        font-weight: 750;
+        color: azure;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+       }
+       #text{
+        border-radius: 1rem;
+        text-align: center;
+        margin: 3px;
+        border: transparent;
+        
+       }
+       #text1{
+        border-radius: 1rem;
+        text-align: center;
+        margin: 3px;
+        border: transparent;
+        width: 225px;
+       }
+       #text:hover,#text1:hover{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       }
+       h1{
+        margin-bottom: 15px;
+       }
+       .name{
+        display: flex;
+       }
+       #submit{
+            border-radius: 1rem;
+            border: transparent;
+            width: 300px;
+            margin-left: 90px;
+            margin-top: 15px;
+            background-color: #56acff;
+       }
+       #submit:hover{
+        
+        box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       }
+       
+       
+       
+    </style>
+</head>
+<body>
+
+    
+    <div class="sign_up">
+            <div class="image">
+                <div class="name1">Your adventure<br><span style="font-family:Lucida Handwriting;color: #FFFF00;">starts here</span></div>  
+            </div>
+            <form method="POST">
+                {%csrf_token %}
+                <div class="form">
+                    <h1 align="center" style="font-family:Georgia, 'Times New Roman', Times, serif; text-shadow: 2px 2px #ffffff; font-weight: 400;">Create an account</h1>
+                    <div class="name">
+                        <input type="text" name='first_name' placeholder="First name" id="text1">
+                        <input type="text" name='last_name' placeholder="Last name" id="text1">
+                    </div>
+                    
+                    <input type="email" name='email' placeholder="Email" id="text">
+                    <input type="password" name='password' placeholder="Password" id="text"></td>
+                    <input type="password" name='confirm_password' placeholder="Confirm password" id="text">
+                    <input type="text" name="username" placeholder="Create username" id="text">
+                    <input type="submit" value="Register" id="submit">
+                    <span style="margin-left: 120px;margin-top:20px;">Already have an account? <a href="/sign_in" style="text-decoration: none;">Log in</a></span>
+                    <span style="font-weight: 200;color:red ;text-align: center;">{{ error }}</span>
+                </div>
+            </form>
+    </div>
+    
+    
+</body>
+</html>

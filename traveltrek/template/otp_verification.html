@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        
+        .container{
+            display: flex;
+            text-align: center;
+        }
+        .image{
+            background-image: url('static/images/OTP.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:700px;
+            height: 650px;
+            margin-top: 50px;
+            border-radius: 0.7rem;
+        }
+        .OTP{
+            margin-left:60px;
+            margin-top: 150px;
+            text-align: start;
+        }
+        #otp{
+            width: 350px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #submit{
+            width: 350px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #2996ff;
+        }
+        a:hover{
+            font-weight: 700;
+        }
+        #icon{
+            height: 50px;
+            width: 50px;
+            padding: 20px;
+            margin-left: 130px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+
+        </div>
+        <div class="OTP">
+            <i class="fa-regular fa-circle-user" id="icon"></i><br>
+            <span style="font-weight: 600;font-size: 40px;margin-left: 10px;"> OTP Verification</span>
+            <br><span style="font-weight: 400;margin-left: 10px;">Enter OTP code to rest your Password</span>
+            <br><br>
+            <form method="POST">
+
+                {% csrf_token %}
+
+            <input type="text" name="otp" placeholder="Enter OTP" id="otp">
+            <br><br>
+            <input type="submit" name="submit" value="Verify & Proceed" id="submit">
+            <br><br>
+            <span style="color: red;margin-left: 130px;">{{ error }}</span>
+                
+            </form>
+            <span style="margin-left: 100px;" id="back"> Didn't receive OTP code? </span><br><a href="/forget_password" style="text-decoration: none;margin-left: 135px;color:black" >Resend code
+        </div>  
+    </div>  
+    
+</body>
+</html>

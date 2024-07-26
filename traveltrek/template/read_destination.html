@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Read Destination</h1>
+    <table align="center" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>/</th>
+            <th>/</th>
+            <th>/</th>
+        </tr>
+        {% for x in data %}
+
+            <tr>
+                <td><a href="/read_destination_detail/{{ x.id }}">{{ x.name }}</a></td>
+                <td><img src="{{x.image.url}}" width="100px" height="100px"></td>
+                <td>{{x.price}}</td>
+                <td><a href="/delete_destination/{{ x.id }}">Remove</a></td>
+                <td><a href="/update_destination/{{ x.id }}">Update</a></td>
+                <td><a href="/create_book/{{ x.id }}">Book</a></td>
+                
+
+            </tr>
+
+        {% endfor %}
+    </table>
+</body>
+</html>
