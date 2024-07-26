@@ -9,25 +9,97 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <style>
+        .container{
+            display: flex;
+            text-align: center;
+        }
+        .image{
+            background-image: url('static/images/f1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:600px;
+            height: 650px;
+            margin-top: 50px;
+            border-radius: 0.7rem;
+        }
+        .Destination{
+            margin-left:60px;
+            margin-top: 150px;
+            text-align: start;
+        }
+       
+        #text{
+            width: 430px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #text1{
+            width: 120px;
+            padding: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-radius: 0.7rem;
+            border-top-right-radius:0px;
+            border-bottom-right-radius: 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #image{
+            margin-left: 3px;
+            padding: 1rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+            border-radius: 0.7rem;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #image1{
+            width: 340px;
+            height: 40px;
+            border-radius: 0.7rem;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #submit{
+            width: 350px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #2996ff;
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="image">
 
         </div>
-        <span>Add Destination</span>
-        
+       
+        <div class="Destination">
+        <span style="font-weight: 600;font-size: 40px;margin-left: 10px;margin-left: 50px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Add Destination</span>
+        <br><br>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="text" name="name"></td>
-            
-                    <input type="file" name="image">
-                
-                    <input type="text" name="description" >
-                
-                    <input type="text" name="price">
-            
-                    <select name="category">
+                    <input type="text" name="name" placeholder="Destination Name" id="text">
+                    <br><br>
+                    <input type="text" name="description" placeholder="Add Description" id="text">
+                    <br><br>
+                    <input type="text" name="price" placeholder="Price" id="text">
+                    <br><br>
+                    <span id="text1">Add Image</span><input type="file" name="image" id="image">
+                    <br><br>
+                    <span id="text1">Category</span>
+                    <select name="category" id="image1">
+                        <option></option>
                         <option value="adventure">Adventure</option>
                         <option value="wildlife">wildlife</option>
                         <option value="beach">beach</option>
@@ -35,8 +107,10 @@
                         <option value="archaeological">Archaeological</option>
                         <option value="Trek">Trek</option>
                     </select>
-                <input type="submit" value="submit">
+                    <br><br>
+                    <input type="submit" value="submit" id="submit">
             </form>
+        </div>
     </div>
 </body>
 </html>
