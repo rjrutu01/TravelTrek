@@ -6,56 +6,491 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveltrek</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    
+    <style>
+        body{
+            background-image: url('static/images/login.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .navbar{
+           
+            margin-top: 10px;
+            height: 60px;
+            display: flex;
+            justify-items: start;
+        }
+        .logo{
+            margin-left: 30px;
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            padding-top: 5px;
+        }
+        .menu{
+            width: 800px;
+
+            display: flex;
+            justify-content: space-evenly;
+            height: 40px;
+            padding-top: 5px;
+        }
+        .menu a{
+            text-decoration: none;
+            color:white;
+        }
+        .menu a:hover{
+            font-weight: 600;
+            color: black;
+        }
+        .button1{
+            width: 300px;
+            height: 40px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .register,.login{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .register:hover,.login:hover{
+            background-color: white;
+        }
+        .login a,.register a,.logout a{
+            text-decoration: none;
+            color: black;
+        }
+        .logout{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 0.5rem;
+            margin-right: 60px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .logout:hover{
+            background-color: white;
+        }
+        .container{
+            height: 600px;
+            margin-top: 15px;
+            
+            display: flex;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .text{
+            margin: 100px;
+        }
+        #name{
+            font-size: 65px;
+            font-weight: 500;
+            color: white;
+            text-shadow: 2px 2px #ffffff;
+        }
+        .name1{
+            font-size: 80px;
+            font-weight: 500;
+            margin-top: 0px;
+            font-family:Segoe Script;
+            color: #ffffcc;
+        }
+        .text2{
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .destination{
+            margin-top: 15px;
+            height: 360px;
+            display: flex;
+            background-color: white;
+        }
+        .text3{
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+            margin-left: 100px;
+            padding-top: 40px;
+            padding-left: 40px;
+            font-size: 25px;
+            font-weight: 400;
+            font-family:Segoe Script;
+            border-radius: 0.5rem;
+            background-image: url('static/images/login.jpg');
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .arrow {
+            width: 40px;
+            text-align: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .arrow a{
+            color: black;
+        }
+        .image{
+            margin-top: 20px;
+            margin-left: 20px;
+            height: 300px;
+            width: 1000px;
+            display: flex;
+        }
+        .box{
+            height: 300px;
+            width: 300px;
+            margin-left: 25px;
+            
+        }
+        .box img{
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 300px;
+            width: 300px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .detail{
+            height: 400px;
+            background-image: url('static/images/login.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-top: 20px;
+        }
+        .info{
+            font-size: 65px;
+            font-weight: 500;
+            color: white;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .info1{
+            font-size: 60px;
+            font-weight: 500;
+            margin-top: 0px;
+            font-family:Segoe Script;
+            color:#ffff00;
+            text-align: center;
+        }
+        .info2{
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 0px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color:white;
+            text-align: center;
+        }
+        .button{
+            border: 1px solid white;
+            width: 150px;
+            color: white;
+            margin-left: 45%;
+            margin-top: 20px;
+            padding-top: 5px;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .review{
+            height: 800px;
+            background-image: url('static/images/review2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .review_text{
+            font-size: 50px;
+            font-weight: 800;
+            font-family:Segoe Script;
+            color:#1a3300;
+            text-align: center;
+            padding-top: 25px;
+        }
+        .review_text1{
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 0px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color:white;
+            text-align: center;
+        }
+        .review_main,.review_main1{
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .review_box,.review_box3{
+            height: 300px;
+            width: 450px;
+            margin-left: 30px;
+            border-radius: 0.5rem;
+           
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .review_box1{
+            height: 300px;
+            width: 450px;
+            margin-left: 50px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .circle{
+            height: 40px;
+            width: 50px;
+            margin-top: 15px;
+            margin-left: 25px;
+            border-radius: 50%;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .rate{
+            display: flex;
+            width: 150px;
+            margin-top: 15px;
+            margin-left: 25px;
+            color: #ffff00;
+            justify-content: space-evenly;
+        }
+        .rate1{
+            margin-top: 10px;
+            height: 135px;
+            width: 390px;
+            margin-left: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 5px;
+            border-radius: 0.5rem;
+        }
+        .rate_name{
+            margin-top: 10px;
+            height: 40px;
+            width: 150px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 5px;
+            margin-left: 290px;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+        .bottom{
+            height: 350px;
+            background-color: white;
+            display: flex;
+        }
+        .bottom_text{
+            width: 500px;
+        }
+        .f1{
+            font-size: 40px;
+            margin-top: 20px;
+            margin-left: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .f2{
+            margin-left: 20px;   
+            padding: 5px;
+            font-size: 18px;
+        }
+        .f3{
+            margin-left: 50px;
+            margin-top: 20px;
+            font-size: 30px;
+
+        }
+        .f3 i{
+            color: #39e600;
+        }
+        .bottom_text1{
+            display: flex;
+            justify-content: space-evenly;
+            width: 1000px;
+            padding-top: 30px;
+        }
+       
+    </style>
 </head>
+<!--Navbar Section-->
 <body>
     
+    <div class="navbar">
+        <div class="logo"><i class="fa-solid fa-mountain-sun"></i></div>
+                {% if request.user.is_authenticated %}
 
-    
-            {% if request.user.is_authenticated %}
-                <h3><a href="/logout">logout</a></h3>
 
-                {% if request.user.is_superuser %}
+                    {% if request.user.is_superuser %}
 
-                    admin
+                        <div class="menu">
+                            <a href="/create_destination">create_destination</a>
+                            <a href="/read_destination">read_destination</a>
+                            <a href="/read_book">read_booking</a>
+                            <a href="/user_destination">Destination</a>
+                        </div>
 
-                {% elif request.user.is_staff %}
-                
-                    <h3 ><a href="/create_destination">create_destination</a></h3>
-                    <h3 ><a href="/read_destination">read_destination</a></h3>
-                    <h3 ><a href="/read_book">read_booking</a></h3>
+                    {% elif request.user.is_staff %}
+
+                        <div class="menu">
+                            <a href="/create_destination">create_destination</a>
+                            <a href="/read_destination">read_destination</a>
+                            <a href="/read_book">read_booking</a>
+                            <a href="/user_destination">Destination</a>
+                        </div>
+
+                    {% else %}
+                        <div class="menu">
+                            <a href="">Home</a>
+                            <a href="">About</a>
+                            <a href="">Blog</a>
+                            <a href="/user_destination">Destination</a>
+                            <a href="/read_book">Book Detail</a>
+                        </div>
+
+                    {% endif %}
+                    <div class="logout"><a href="/logout">logout</a></div>
+                    
 
                 {% else %}
-                    
+                    <div class="menu">
                         <a href="">Home</a>
                         <a href="">About</a>
                         <a href="">Blog</a>
-                        <a href="/read_destination">Destination</a>
-                        <a href="/read_book">Book Detail</a>
+                        <a href="/user_destination">Destination</a>
+                    </div>
+                    <div class="button1">
+                        <div class="register"><a href="/sign_up">Sign up</a></div>
+                        <div class="login"><a href="/sign_in">Log in</a></div>
+                    </div>
+                    
+                {% endif %}   
+    </div>
 
-                {% endif %}
+<!--Hero Section-->
+<div class="container">
+    <div class="text">
+        <span id="name">PROVIDING</span>
+        <div class="name1">Inspiration <span style="color: white;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-shadow: 2px 2px #ffffff;">JOURNEY..</span></div>
+        <div class="text2"><span>A journey of a thousand miles begins with a single step</span><br><span>Giving you an opportunity to give back,learn and grow as you experience some of the most amazing places on earth</span></div>
+    </div>
+</div>
 
-            {% else %}
-        
-                    <a href="">Home</a>
-                    <a href="">About</a>
-                    <a href="">Blog</a>
-                    <a href="/read_destination">Destination</a>
-                    <a href="/sign_up">Sign up</a>
-                    <a href="/sign_in">Log in</a>
-                  
-            {% endif %}   
-    
-    
-    
-    
-    
+<!--Destination Section-->
+<div class="destination">
+    <div class="text3">Finding yourself <br> in unexpected places...<br><br><div class="arrow"><a href="/user_destination"><i class="fa-solid   fa-arrow-right"></i></a></div></div>
+        <div class="image">
+            {% for x in data %}
+            
+                <div class="box">
+                    <a href="/user_destination"><img src="{{ x.image.url }}" ></a>
+                </div>
+            
+            {% endfor %}
+        </div> 
+</div>
+<!--Website details Section-->
+<div class="detail">
+    <div class="info">
+        LEARN & GIVE BACK
+    </div>
+    <div class="info1">
+        With Our Conservation Camp
+    </div>
+    <div class="info2">
+        Escape the ordinary and embrace the extraordinary on a transformative nature camp<br> Experience the magic of the wilderness, from starlit nights to breathtaking hikes..
+    </div>
+    <div class="button">
+        LEARN MORE
+    </div>
+</div>
+<!--Review section-->
+<div class="review">
+    <div class="review_text">
+        Inspirational Stories
+    </div>
+    <div class="review_text1">
+        FROM OUR PARTICIPENTS
+    </div>
+    <div class="review_main">
+        <div class="review_box">
+            <div class="circle"><i class="fa-solid fa-user"></i></div>
+            <div class="rate">
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="rate1">
+                I have nothing but praise for the professional way in which my entire trip was handled, from airport transfers to hotel accommodation and flights all beautifully arranged. It was an amazing holiday thank you for a job well done!!
+            </div>
+            <div class="rate_name">
+                ELINA WATSON
+            </div>
+        </div>
+        <div class="review_box1">
+            <div class="circle"><i class="fa-solid fa-user"></i></div>
+            <div class="rate">
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="rate1">
+                "It was an amazing holiday thank you for a job well done!!"
+            </div>
+            <div class="rate_name">
+                RUTURAJ JAGTAP
+            </div>
+        </div>
+    </div>
+    <div class="review_main1">
+        <div class="review_box3">
+            <div class="circle"><i class="fa-solid fa-user"></i></div>
+            <div class="rate">
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="rate1">
+                The best travel platform that provide one of the great experience..
+            </div>
+            <div class="rate_name">
+                TYLOR...
+            </div>
+        </div>
+    </div>
+</div>
+<!--Bottom section-->
 
+<div class="bottom">
+    <div class="bottom_text">
+       <div class="f1">TravelTrek</div> 
+       <div class="f2">"Escape the ordinary! Discover destination with our incredible travel package."<br><br><span style="font-size: 15px;">Embark on an adrenaline-pumping journey through the heart of the Andes. Hike to dizzying heights, conquer cascading waterfalls, and experience the thrill of a lifetime.</span></div>
+       <div class="f3"><i class="fa-brands fa-whatsapp"></i>+91-9699095226</div>
+    </div>
+    <div class="bottom_text1">
+        <div class="f4">
+            <span style="font-size: 20px;">DESTINATION</span><br><br>
+            <span style="font-size: 17px;">MUMBAI</span><br><br>
+            <span style="font-size: 17px;">SATARA</span><br><br>
+            <span style="font-size: 17px;">PUNE</span><br><br>
+            <span style="font-size: 17px;">CH.SAMABHAJI NAGAR</span><br>
+        </div>
+        <div class="f5">
+            <span style="font-size: 20px;">WORLDUNITE</span><br><br>
+            <span style="font-size: 17px;">ABOUT US</span><br><br>
+            <span style="font-size: 17px;">CONTACT</span><br><br>
+            <span style="font-size: 17px;">BLOG</span>
 
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

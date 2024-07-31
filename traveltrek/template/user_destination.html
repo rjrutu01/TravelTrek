@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        body{
+            background-image: url('static/images/sea.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .read{
+            margin-top: 50px;
+            margin-left: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            
+        }
+        .image{
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 300px;
+            height: 400px;
+            margin-left: 30px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: white;
+        }
+        .text{
+            width: 230px;
+            margin-left: 30px;
+            margin-top: 10px;
+            text-align: center;
+            border-radius: 0.7rem;
+            padding: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .text a{
+            text-decoration: none;
+            color: black;
+        }
+        .text a:hover{
+            font-weight: 600;
+        }
+        .text1{
+            width: 200px;
+            margin-left: 45px;
+            margin-top: 8px;
+            text-align: center;
+            border-radius: 0.7rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #text1{
+            text-decoration: none;
+            color: black;
+        }
+        #text2{
+            text-decoration: none;
+            color: black;
+            margin-left: 35px;
+        }
+       
+        
+        .text2{
+            margin-top: 10px;
+            text-align: center;
+        }
+        .head{
+            text-align: center;
+            font-size: 40px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+        <div class="head"><span>Destination</span></div>
+        <div class="read">
+            {% for x in data %}
+                
+                    <div class="image">
+                        
+                        <img src="{{x.image.url}}" style="height: 250px;width: 230px;margin-left: 32px;margin-top: 15px;border-radius: 0.7rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <br>
+                        <div class="text"><a href="/read_destination_detail/{{ x.id }}" >{{ x.name }}</a><br></div>
+                        
+                       <div class="text1">
+                        {{ x.category }}
+                       </div> 
+                        
+                    </div>
+                
+            {% endfor %}
+        </div>
+</body>
+</html>

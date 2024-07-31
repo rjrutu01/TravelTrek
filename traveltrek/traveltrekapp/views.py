@@ -37,6 +37,12 @@ def read_destination(request):
     context={}
     context['data']=p
     return render(request,'read_destination.html',context)
+
+def user_destination(request):
+    p=destination.objects.all()
+    context={}
+    context['data']=p
+    return render(request,'user_destination.html',context)
     
 def delete_destination(request,rid):
     p=destination.objects.filter(id=rid)
@@ -130,7 +136,10 @@ def create_book(request,rid):
         
 @login_required(login_url='/login')
 def read_book(request):
-    book=book_now.objects.filter(user=request.user)
+    if request.user.is_staff:
+        book=book_now.objects.all()
+    else:
+        book=book_now.objects.filter(user=request.user)
     context={}
     context['data']=book
     return render(request,'read_booking.html',context)
@@ -177,6 +186,12 @@ def create_feedback(request,rid):
             
             return HttpResponse('Review Added')
         
+def read_feedback(request):
+    p=feedback.objects.all()
+    context={}
+    context['review']=p
+    return render(request,'read_feedback.html',context)
+        
 def read_destination_deatails(request,rid):
     Destination=destination.objects.filter(id=rid)
     d=destination.objects.get(id=rid)
@@ -196,7 +211,7 @@ def read_destination_deatails(request,rid):
     context={}
     context['data']=Destination
     if n==0:
-        context['avg']='No feedback'
+        context['avg']='5'
     else:
         context['avg_rating']=avg
         context['avg']=avg_r
@@ -223,7 +238,7 @@ def forget_password(request):
                 subject ="OTP Verificaton"
                 email_from=settings.EMAIL_HOST_USER
                 recipient_list=[email]
-                message = f"OTP is {otp}"
+                message = f"Your OTP is {otp}.Do not share with other"
                 
                 EmailMessage(subject,message,email_from,recipient_list,connection=connection).send()
             

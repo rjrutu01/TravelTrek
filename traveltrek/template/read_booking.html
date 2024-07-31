@@ -1,38 +1,143 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Read Booking Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        .body{
+            background-color: #d9ffcc;
+        }
+        .title{
+            text-align: center;
+            font-size: 30px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            margin-top: 20px;
+        }
+        .box{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .container{
+            background-color: white;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            border-top-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            height: 350px;
+            width: 600px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .main{
+            margin-left: 10px;
+            margin-top: 25px;
+        }
+        .name{
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 280px;
+            height: 40px;
+            padding-top: 4px;
+            border-top-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .phone,.person,.price{
+            display: flex;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .icon{
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 50px;
+            height: 40px;
+            padding-top: 4px;
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        .text{
+            text-align: center;
+            margin-left: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 200px;
+            height: 40px;
+            padding-top: 4px;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .delete{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 100px;
+            height: 30px;
+            border-radius: 0.5rem;
+            background-color: #39e600;
+        }
+        .delete a{
+            text-decoration: none;
+            color: black;
+        }
+        .update{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 100px;
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 0.5rem;
+            background-color: #39e600;
+        }
+        .update a{
+            text-decoration: none;
+            color: black;
+        }
+        .link{
+            display: flex;
+            margin-top: 12px;
+            text-align: center;
+            margin-left: 20px;
+           
+        }
+        .review{
+            margin-left: 20px;
+            text-align: center;
+            margin-top: 15px;
+            width: 210px;
+            height: 30px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 0.5rem;
+            background-color: #39e600;
+        }
+        .review a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-    <h1 align="center">Read Booking</h1>
-    <table border="1" align="center">
-        <tr>
-            <th>User Id</th>
-            <th>Image</th>
-            <th>Destination</th>
-            <th>phone</th>
-            <th>No of Person</th>
-            <th>Price</th>
-            <th>/</th>
-            <th>/</th>
-        </tr>
+    <div class="title">Booking review</div> 
+    <div class="box">    
         {% for x in data %}
-        <tr>
-            <td>{{ x.user.id }}</td>
-            <td><img src="{{ x.destination.image.url }}" height="200px" width="200px"></td>
-            <td>{{ x.destination.name }}</td>
-            <td>{{ x.phone }}</td>
-            <td>{{ x.person }}</td>
-            <td>{{ x.total_price }}</td>
-            <td><a href="/delete_book/{{ x.id }}">Delete</a></td>
-            <td><a href="/update_book/{{ x.id }}">update</a></td>
-            <td><a href="/create_feedback/{{ x.id }}">Feedback</a></td>
+        <div class="container">
+            <img src="{{ x.destination.image.url }}" style="height: 300px;width: 250px;margin-left: 20px;margin-top: 25px;border-top-left-radius: 0.5rem;
+                                border-bottom-right-radius: 0.5rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="main">
+                <div class="name">{{ x.destination.name }}</div>
+                <div class="phone"><div class="icon"><i class="fa-solid fa-phone"></i></div><div class="text">{{ x.phone }}</div></div>
+                <div class="person"><div class="icon"><i class="fa-solid fa-user"></i></div><div class="text">{{ x.person }}</div></div>
+                <div class="price"><div class="icon"><i class="fa-solid fa-indian-rupee-sign"></i></div><div class="text">{{ x.total_price }}</div></div>
+                <div class="link">
+                    <div class="delete"><a href="/delete_book/{{ x.id }}">Cancel</a></div>
+                    <div class="update"><a href="/update_book/{{ x.id }}">Changes</a></div>
+                </div>
+                <div class="review"><a href="/create_feedback/{{ x.id }}">Add review</a></div>
+            </div>
 
-
-        </tr>
+        </div>
         {% endfor %}
-    </table>
+    </div>
 </body>
 </html>

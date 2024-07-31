@@ -1,43 +1,109 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Destination</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        body{
+            background-color: #ffe6e6;
+        }
+        .container{
+            display: flex;
+            text-align: center;
+        }
+        .image{
+            background-image: url('static/images/update.jpg');
+            background-color: white;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:600px;
+            height: 650px;
+            margin-top: 50px;
+            border-radius: 0.7rem;
+        }
+        .update{
+            margin-left:60px;
+            margin-top: 150px;
+            text-align: start;
+        }
+        #text{
+            width: 430px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #text1{
+            width: 120px;
+            padding: 1rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-radius: 0.7rem;
+            border-top-right-radius:0px;
+            border-bottom-right-radius: 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #text2{
+            width: 340px;
+            height: 40px;
+            border-radius: 0.7rem;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border: transparent;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #submit{
+            width: 350px;
+            height: 40px;
+            text-align: center;
+            border-radius: 0.7rem;
+            border: transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #2996ff;
+            margin-left: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1 align="center">update_destination</h1>
-    <table border="1" align="center">
-        <form method="POST">
-            {% csrf_token %}
-            {% for x in data %}
-            <tr>
-                <td>Destination Name</td>
-                <td><input type="text" name="uname" value="{{ x.name }}"></td>
-            </tr>
+   <div class="container">
+        <div class="image">
+
+        </div>
+        <div class="update">
+            <span style="font-weight: 600;font-size: 40px;margin-left: 10px;margin-left: 50px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Add Destination</span>
+            <br><br>
+            <form method="POST">
+                {% csrf_token %}
+                {% for x in data %}
             
-            <tr>
-                <td>Destination Description</td>
-                <td><input type="text" name="udescription" value="{{ x.description }}"></td>
-            </tr>
-            <tr>
-                <td>Destination Price</td>
-                <td><input type="text" name="uprice" value="{{ x.price }}"></td>
-            </tr>
-            <tr>
-                <td>Destination Category</td>
-                <td><select name="ucategory">
-                    <option value="adventure" {% if x.category == adventure %} selected {% endif %}>Adventure</option>
-                    <option value="wildlife" {% if x.category == wildlife %} selected {% endif %}>wildlife</option>
-                    <option value="beach" {% if x.category == beach %} selected {% endif %}>beach</option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2" align="center"><input type="submit" value="submit"></th>
-            </tr>
-            {% endfor %}
-        </form>
-    </table>
+                    <td><input type="text" name="uname" value="{{ x.name }}" id="text"></td>
+                    <br><br>
+                    <td><input type="text" name="udescription" placeholder="description" id="text"></td>
+                    <br><br>
+                    <td><input type="text" name="uprice" value="{{ x.price }}" id="text"></td>
+                    <br><br>
+                    <span id="text1"> Category</span>
+                    <select name="ucategory" id="text2">
+                        <option value="adventure" {% if x.category == adventure %} selected {% endif %}>Adventure</option>
+                        <option value="wildlife" {% if x.category == wildlife %} selected {% endif %}>wildlife</option>
+                        <option value="beach" {% if x.category == beach %} selected {% endif %}>beach</option>
+                        <option value="religeous" {% if x.category == religeous %} selected {% endif %}>religeous</option>
+                        <option value="archaeological" {% if x.category == archaeological %} selected {% endif %}>archaeological</option>
+                        <option value="Trek" {% if x.category == Trek %} selected {% endif %}>Trek</option>
+
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Update" id="submit">
+                {% endfor %}
+            </form>
+        </div>
+    </div>
 </body>
 </html>
